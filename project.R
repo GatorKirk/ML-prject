@@ -30,3 +30,7 @@ weathersub["NAME"][weathersub["NAME"] == "CHICAGO OHARE INTERNATIONAL AIRPORT, I
 weathersub <- weathersub[weathersub$NAME != "BUENA VENTURA LAKES 6.0 ENE, FL US",]
 names(weathersub)[names(weathersub)=="NAME"] <- "ORIGIN"
 total <- merge(top5,weathersub,by=c("ORIGIN","DATE"))
+summary(total)
+total[is.na(total)] = 0
+
+write.csv(total,"C:\\Users\\kirk\\Desktop\\Machine Learning\\project\\ML-prject\\data.csv", row.names = FALSE)
